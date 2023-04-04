@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Splash_presentacion">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/pantallacargafondoofi">
+
+       <ImageView
+           android:layout_width="350px"
+           android:layout_height="350px"
+           android:src="@drawable/logotools"
+           android:layout_marginTop="200px"
+           android:layout_marginLeft="350px"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="450px"
+            android:layout_width="match_parent"
+            android:layout_height="1200px">
+
+            <TextView
+                android:layout_marginLeft="100px"
+                android:layout_width="550px"
+                android:layout_height="wrap_content"
+                android:text="Tools inc te da la Bienvenida!"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_marginTop="150px"
+                android:layout_marginLeft="100px"
+                android:layout_width="880px"
+                android:layout_height="wrap_content"
+                android:text="ToolsInc permite a los usuarios escanear códigos QR en las herramientas y equipos para obtener información sobre su ubicación, estado y disponibilidad en tiempo real."
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif"
+                />
+
+            <Button
+                android:id="@+id/buttonSig"
+                android:layout_marginTop="170px"
+                android:layout_marginLeft="700px"
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:background="@color/white"
+                android:padding="20px"
+                android:text="Iniciar sesión"
+                android:fontFamily="sans-serif"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
