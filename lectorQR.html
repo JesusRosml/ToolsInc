@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector de codigo QR</title>
+    <!-- Estilos de CSS -->
+    <link rel="stylesheet" href="assets/styles/lectorQR.css">
+    <link rel="stylesheet" href="assets/styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/807171747a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><i class="fa-solid fa-house"></i><a href="lectorQR.html">Autorización de prestamos</a></li>
+                <li><i class="fa-solid fa-file-circle-plus"></i><a href="QRHerramientas.html">Registro de herramientas</a></li>
+                <li><i class="fa-solid fa-users-viewfinder"></i><a href="QRTrabajadores.html">Registro de trabajadores</a></li>
+                <li><i class="fa-solid fa-box-archive"></i><a href="#">Almacen</a></li>
+                <li><i class="fa-sharp fa-solid fa-clock"></i><a href="#">Historial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seccion principal -->
+
+        <section class="container-one">
+            <div class="text-descripcion">
+                <h1>Autorizar prestamo de herramientas</h1>
+
+                <p>
+                    Por favor, asegúrese de que el empleado tenga el código QR generado por 
+                    la empresa antes de iniciar el proceso de préstamo.
+                </p>
+            </div>
+
+            <div class="portada-img">
+                <img src="assets/img/Teamwork-sinfonfo.png" alt="">
+            </div>
+
+            <div class="button-emergente">
+                <button id="myButton">Iniciar proceso</button>
+            </div>
+        </section>
+    
+        <!-- Seccion de los prestamos en proceso -->
+
+        <section class="container-two">
+            <div class="container-proceso">
+                <h2><i class="fa-solid fa-calendar-days"></i> Prestamos en proceso</h2>
+            </div>
+        </section>
+
+        <!-- Codigo de la ventana emergente -->
+
+        <section class="popup">
+            <div class="container-Cerrar">
+                <button id="buttonCerrar">X</button>
+            </div>
+            <div class="container-padre">
+                <div class="container-oneUL">
+                    <h1>Lector de codigo QR</h1>
+                    <video id="preview" onclick="scanner.start();"></video>
+        
+                    <p>Sugerencias</p>
+
+                    <ul>
+                        <li>Por favor, escanee primero el código QR del trabajador.</li>
+                        <li>Asegúrese de limpiar la cámara antes de escanear.</li>
+                        <li>Por favor, asegúrese de encontrarse en un lugar con buena iluminación para poder escanear correctamente el código QR</li>
+                    </ul>
+                   </div>
+        
+                    <div class="user-info">    
+                        <div class="container-procesoOne">
+                            <h3>Informacion de la solicitud del prestamo</h3>
+                        </div>
+
+                        <div class="container-trabajador">
+                            <h3>Informacion del trabajador:</h3>
+
+                            <div class="qrTrabajadorOner">
+
+                            </div>
+                            <div class="require-text">
+                                <input class="modicar" type="text" placeholder="Introduzca la cantidad de herramientas">
+                                <input type="text" placeholder="Introduzca la fecha">
+                            </div>
+
+                            <h4>Herramientas solicitadas</h4>
+                            <div class="qrHerramientasTwo">
+                                
+                            </div>
+
+
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Archivos de JavaScript -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/instascan.min.js"></script>
+    <script src="assets/scripts/appLector.js"></script>
+</body>
+</html>

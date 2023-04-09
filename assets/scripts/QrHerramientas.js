@@ -28,6 +28,15 @@ boton.addEventListener("click", () => {
     qrimg.addEventListener("load", () => {
         container.classList.add("active");
         boton.innerHTML = "Generar codigo QR";
+
+        let imgPath = qrimg.getAttribute("src");
+        let nombreArchivo = getFileName();
+        
+        fetch(imgPath)
+        .then((response) => response.blob())
+        .then((blob) => {
+            saveAs(blob, nombreArchivo + ".png");
+      });
     });
 });
 
@@ -42,17 +51,29 @@ qrInputs.forEach(input => {
     });
 });
 
+// ... (resto del código)
+
 boton.addEventListener("click", () => {
-    let descargar = document.querySelector("#descargar"); // Mover aquí
+    let descargar = document.querySelector("#descargar");
     descargar.addEventListener("click", () => {
         let imgPath = img.getAttribute("src");
-        let nombreArchivo = getFileName(imgPath);
+        let nombreArchivo = getFileName();
 
-        saveAs(imgPath, nombreArchivo);
+        // Convertir la imagen en Blob y guardarla como PNG
+        fetch(imgPath)
+            .then((response) => response.blob())
+            .then((blob) => {
+                saveAs(blob, nombreArchivo + ".png");
+            });
     });
 });
 
-function getFileName(str) {
-    return str.substr(str.lastIndexOf('/') + 1);
-}
+function getFileName() {
+    // Obtener el valor del campo de entrada del nombre del tra
+    const nombreHerramienta = document.getElementById("Nombre-Herramienta").value;
 
+    // Reemplazar cualquier caracter no permitido en nombres de archivo con guiones bajos
+    const nombreArchivo = nombreHerramienta.replace(/[^a-zA-Z0-9\s-]/g, '_');
+
+    return nombreArchivo;
+}
