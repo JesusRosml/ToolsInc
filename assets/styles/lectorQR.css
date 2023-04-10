@@ -136,41 +136,123 @@ main {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: auto;
+    overflow-x: none;
+}
+
+.containerprincipal {
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+
+.containerprincipalhijo {
+    height: auto;
+    width: 50%;
+    display: block;
+    position: relative;
+    border-right: 2px solid #BDBDBD;
+    border-radius: 10px 0px 0px 10px ;
+    background: #EEEEEE;
+}
+
+.containerprincipalhijo h1 {
+    color: #424242;
+    text-align: center;
+}
+
+.containerprincipalhijo video {
+    width: 70%;
+    display: block;
+    background-color: #212121;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+.containerhijo2 {
+    height: auto;
+    width: 49%;
+    background: #fff;
+    position: relative;
+}
+
+.containervacio {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    margin-top: 120px;
+    font-size: 10px;
+}
+
+.containervacio img {
+    width: 220px;
+    display: block;
+    margin: auto;
+}
+
+.containerhijo2 h4 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.container-vacio2 {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    color: #212121;
+    font-size: 20px;
+    text-align: center;
+}
+
+.container-vacio2 img {
+    display: block;
+    width: 240px;
+    margin: auto;
 }
 
 .container-padre {
-    display: flex;
+    display: block;
     height: 100%;
     width: 100%;
-    margin-top: -40px;
+    margin-top: 60px;
     position: absolute;
 }
 
 .container-Cerrar {
     width: 100%;
     height: 50px;
-    position: relative;
+    position: fixed;
+    background: #EEEEEE;
     display: block;
     z-index: 100;
 }
 
 #buttonCerrar {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border: none;
-    margin: 10px;
-    margin-left: 1250px;
-    color: #fff;
-    background: #2F335C;
+    margin: 5px;
+    margin-left: 625px;
+    background: #fff;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
     border-radius: 50%;
 }
 
 .container-oneUL {
-    width: 40%;
-    height: 85%;
+    width: 95%;
+    height: auto;
     position: relative;
     display: block;
-    margin: 10px;
+    margin: 0px auto;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #BDBDBD;
 }
 
 ul li {
@@ -178,17 +260,11 @@ ul li {
     text-align: left;
 }
 
-.container-oneUL h1 {
-    color: #183153;
-    text-align: center;
-}
-
-.container-oneUL video {
-    width: 70%;
+.desplazamiento {
+    width: 100%;
+    height: 500px;
+    position: absolute;
     display: block;
-    background-color: #212121;
-    border-radius: 20px;
-    margin: 20px auto;
 }
 
 .container-oneUL p {
@@ -198,9 +274,9 @@ ul li {
 }
 
 .user-info {
-    width: 53%;
-    height: 94%;
-    margin: 10px;
+    width: 95%;
+    height: auto;
+    margin: 100px auto;
     position: relative;
     display: block;
     border-radius: 5px;
@@ -219,12 +295,11 @@ ul li {
 
 .container-trabajador {
     width: 95%;
-    height: 450px;
+    height: auto;
     margin: auto;
     margin-top: 40px;
     display: block;
-    overflow: auto;
-    overflow-x: none;
+    position: relative;
 }
 
 .qrTrabajadorOner {
@@ -235,10 +310,11 @@ ul li {
 }
 
 .require-text {
-    width: 100%;
+    width: 95%;
     height: auto;
     position: relative;
     display: none;
+    margin: auto;
 }
 
 .require-text input {
@@ -246,7 +322,29 @@ ul li {
     border-radius: 5px;
     height: 28px;
     outline: none;
+    margin: 8px;
     padding-left: 10px;
+}
+
+.require-text #buttoConfirmar {
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-top: 80px;
+    height: 35px;
+    width: 300px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    background: #183153;
+    border: none;
+}
+
+.desplazamiento {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
 }
 
 .require-text .modicar {
@@ -260,6 +358,23 @@ ul li {
 .qrHerramientasTwo {
     width: 100%;
     height: auto;
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
     position: relative;
+    flex-wrap: wrap;
+}
+
+.containerblanco {
+    width: 100%;
+    height: 10px;
+    position: relative;
+    display: block;
+}
+
+.qrHerramientasTwo ul {
+    border: 2px solid #BDBDBD;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 10px;
+    list-style: none;
 }

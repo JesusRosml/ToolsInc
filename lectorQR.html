@@ -58,45 +58,79 @@
 
         <section class="popup">
             <div class="container-Cerrar">
-                <button id="buttonCerrar">X</button>
+                <button id="buttonCerrar"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="container-padre">
-                <div class="container-oneUL">
-                    <h1>Lector de codigo QR</h1>
-                    <video id="preview" onclick="scanner.start();"></video>
-        
-                    <p>Sugerencias</p>
 
-                    <ul>
-                        <li>Por favor, escanee primero el código QR del trabajador.</li>
-                        <li>Asegúrese de limpiar la cámara antes de escanear.</li>
-                        <li>Por favor, asegúrese de encontrarse en un lugar con buena iluminación para poder escanear correctamente el código QR</li>
-                    </ul>
+            <!-- Contenedor de la camara y informacion del solicitante -->
+            <div class="container-padre"> <!-- Con estilo -->
+                <div class="container-oneUL"> <!-- Con estilo -->
+
+                    <div class="containerprincipal"> <!-- Con estilo -->
+                      <div class="containerprincipalhijo"> <!-- Con estilo -->
+                        <h1>Lector de codigo QR</h1>
+                        <video id="preview" onclick="scanner.start();"></video>
+                        <p>Sugerencias</p>
+
+                        <ul>
+                            <li>Por favor, escanee primero el código QR del trabajador.</li>
+                            <li>Asegúrese de limpiar la cámara antes de escanear.</li>
+                            <li>Por favor, asegúrese de encontrarse en un lugar con buena iluminación para poder escanear correctamente el código QR</li>
+                        </ul>
+                      </div>
+
+                      <!-- Informacion del solicitante  -->
+
+                      <div class="containerhijo2">
+                        <h4>Información del empleado que solicita herramientas</h4>
+
+                        <!-- Contenedor de trabajador vacio -->
+                        <div class="containervacio">
+                            <img src="assets/img/imgOne-Tools.png" alt="">
+
+                            <p>
+                                No hay informacion que mostrar, escanee el codigo QR del trabajador
+                            </p>
+                        </div>
+
+                        <div class="qrTrabajadorOner">
+
+                        </div>
+                        <div class="require-text">
+                            <input class="modicar" type="text" placeholder="Introduzca la cantidad de herramientas">
+                            <input type="text" placeholder="Introduzca la fecha">
+
+
+                            <button id="buttoConfirmar">Confirmar prestamo</button>
+                        </div>
+                      </div>
                    </div>
+                </div>
         
                     <div class="user-info">    
                         <div class="container-procesoOne">
                             <h3>Informacion de la solicitud del prestamo</h3>
                         </div>
 
+                      <div class="desplazamiento">
                         <div class="container-trabajador">
-                            <h3>Informacion del trabajador:</h3>
-
-                            <div class="qrTrabajadorOner">
-
-                            </div>
-                            <div class="require-text">
-                                <input class="modicar" type="text" placeholder="Introduzca la cantidad de herramientas">
-                                <input type="text" placeholder="Introduzca la fecha">
-                            </div>
-
                             <h4>Herramientas solicitadas</h4>
                             <div class="qrHerramientasTwo">
                                 
                             </div>
+                        </div>  
+                      </div>
+                      <div class="container-vacio2">
+                        <img src="assets/img/imgSegundo.png" alt="">
 
+                        <p>
+                            No hay informacion que mostrar, escanee el codigo QR del trabajador
+                        </p>
+                    </div>
 
-                        </div>
+                    </div>
+
+                    <div class="containerblanco">
+
                     </div>
             </div>
         </section>

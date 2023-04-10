@@ -1,16 +1,43 @@
-// Variables de la camara
 const preview = document.getElementById("preview");
 const qrTrabajadorOner = document.querySelector('.qrTrabajadorOner');
 const qrHerramientasTwo = document.querySelector(".qrHerramientasTwo");
-const siteBackdrop = document.querySelector(".site-backdrop");
 const requireText = document.querySelector(".require-text");
+const containerVacio = document.querySelector(".containervacio");
+const containerVacio2 = document.querySelector(".container-vacio2");
+const successMessage = document.createElement("div");
+const errorMessage = document.createElement("div");
 
-let scanner = new Instascan.Scanner({ 
+successMessage.textContent = "Escaneado con éxito";
+errorMessage.textContent = "El código ya fue escaneado anteriormente";
+
+function showMessage(messageElement) {
+  messageElement.style.display = "block";
+  setTimeout(() => {
+    messageElement.style.display = "none";
+  }, 5000);
+}
+
+[successMessage, errorMessage].forEach((messageElement) => {
+  messageElement.style.display = "none";
+  messageElement.style.position = "fixed";
+  messageElement.style.top = "90%";
+  messageElement.style.left = "50%";
+  messageElement.style.transform = "translate(-50%, -50%)";
+  messageElement.style.backgroundColor = "#183153";
+  messageElement.style.color = "white";
+  messageElement.style.padding = "10px 20px";
+  messageElement.style.borderRadius = "5px";
+  document.body.appendChild(messageElement);
+});
+
+errorMessage.style.backgroundColor = "#d9534f";
+
+let scanner = new Instascan.Scanner({
   video: preview,
   mirror: false,
   backgroundScan: false,
-  scanPeriod: 5,
   captureImage: false,
+  scanPeriod: 1,
   videoConstraints: {
     width: { ideal: 256 },
     height: { ideal: 144 },
@@ -21,14 +48,19 @@ let scanner = new Instascan.Scanner({
 // Variable para almacenar el primer código QR escaneado
 let primerCodigo = "";
 
-// Resto del código...
-
+// Array para almacenar los códigos QR escaneados
+let codigosEscaneados = [];
 
 scanner.addListener("scan", function (content) {
-  // Crear un fragmento de documento
-  const docFragment = document.createDocumentFragment();
+  // Verifica si el código QR ya ha sido escaneado
+  if (codigosEscaneados.includes(content)) {
+    showMessage(errorMessage);
+    return;
+  }
 
-  // Si es el primer código QR escaneado, lo almacenamos en el contenedor qrTrabajadorOner
+  // Añade el código QR escaneado al array
+  codigosEscaneados.push(content);
+
   if (primerCodigo === "") {
     primerCodigo = content;
     let items = content.split(" | ");
@@ -41,29 +73,26 @@ scanner.addListener("scan", function (content) {
     qrTrabajadorOner.innerHTML = "";
     qrTrabajadorOner.appendChild(list);
     requireText.style.display = 'block';
+    containerVacio.style.display = 'none';
   } else {
-    // Dividir el contenido usando el separador |
     let items = content.split(" | ");
-    // Crear una lista vacía
     let list = document.createElement("ul");
 
-    // Iterar sobre los elementos y agregarlos a la lista
     items.forEach((item) => {
       let li = document.createElement("li");
       li.textContent = item;
       list.appendChild(li);
     });
 
-    // Crear un contenedor para la lista
     let listContainer = document.createElement("div");
     listContainer.classList.add("list-container");
     listContainer.appendChild(list);
 
-    // Verificar si hay dos listas en el área de '.site-backdrop'
-    
-
-    // Agregar la nueva lista al elemento '.site-backdrop'
     qrHerramientasTwo.appendChild(listContainer);
+    containerVacio2.style.display = 'none';
+
+    // Muestra el mensaje de éxito y lo oculta después de 5 segundos
+    showMessage(successMessage);
   }
 });
 
@@ -81,29 +110,24 @@ Instascan.Camera.getCameras()
 
 // Codigo para la ventana emergente
 function openPopup() {
-  // Verificar si la cámara está activa
+  
   if (scanner.active) {
       scanner.stop(); // Detener la cámara
   }
 
-  // Crea la ventana emergente
   var popup = document.createElement("div");
   popup.className = "popup";
 
-  // Agrega el contenido a la ventana emergente (opcional)
   popup.innerHTML = "Este es el contenido de la ventana emergente.";
 
-  // Agrega la ventana emergente al cuerpo del documento
   document.body.appendChild(popup);
 }
 
-// Obtener el botón y el div popup
 const myButton = document.getElementById('myButton');
 const popup = document.querySelector('.popup');
 
-// Agregar un evento clic al botón
 myButton.addEventListener('click', function() {
-  // Mostrar el div popup
+
   popup.style.display = 'block';
 });
 
@@ -115,7 +139,6 @@ function cerrarPopup() {
   const popup = document.querySelector('.popup');
   popup.style.display = 'none';
   
-  // Verificar si la cámara estaba activa
   if (scanner.active) {
       scanner.start(scanner.camera); // Iniciar la cámara de nuevo
   }
