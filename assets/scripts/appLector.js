@@ -32,6 +32,23 @@ function showMessage(messageElement) {
 
 errorMessage.style.backgroundColor = "#d9534f";
 
+function deleteList(event) {
+  const button = event.target;
+  const ul = button.parentElement;
+  const listContainer = ul.parentElement;
+
+  // Obtener el contenido del código QR que se está eliminando
+  const codigoQR = ul.textContent.trim();
+
+  // Eliminar el elemento del array de códigos escaneados
+  const index = codigosEscaneados.indexOf(codigoQR);
+  if (index !== -1) {
+    codigosEscaneados.splice(index, 1);
+  }
+
+  listContainer.remove();
+}
+
 let scanner = new Instascan.Scanner({
   video: preview,
   mirror: false,
@@ -45,20 +62,15 @@ let scanner = new Instascan.Scanner({
   }
 });
 
-// Variable para almacenar el primer código QR escaneado
 let primerCodigo = "";
-
-// Array para almacenar los códigos QR escaneados
 let codigosEscaneados = [];
 
 scanner.addListener("scan", function (content) {
-  // Verifica si el código QR ya ha sido escaneado
   if (codigosEscaneados.includes(content)) {
     showMessage(errorMessage);
     return;
   }
 
-  // Añade el código QR escaneado al array
   codigosEscaneados.push(content);
 
   if (primerCodigo === "") {
@@ -84,6 +96,11 @@ scanner.addListener("scan", function (content) {
       list.appendChild(li);
     });
 
+    const buttonDelete = document.getElementById("buttondelete").cloneNode(true);
+    buttonDelete.style.display = "block";
+    buttonDelete.addEventListener("click", deleteList);
+    list.appendChild(buttonDelete);
+
     let listContainer = document.createElement("div");
     listContainer.classList.add("list-container");
     listContainer.appendChild(list);
@@ -91,7 +108,6 @@ scanner.addListener("scan", function (content) {
     qrHerramientasTwo.appendChild(listContainer);
     containerVacio2.style.display = 'none';
 
-    // Muestra el mensaje de éxito y lo oculta después de 5 segundos
     showMessage(successMessage);
   }
 });

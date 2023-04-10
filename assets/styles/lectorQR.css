@@ -9,7 +9,7 @@ header {
 header nav {
     width: auto;
     height: 100%;
-    margin-left: 10%;
+    margin-left: 18%;
     position: relative;
 }
 
@@ -377,4 +377,15 @@ ul li {
     padding: 20px;
     border-radius: 10px;
     list-style: none;
+}
+
+#buttondelete {
+    height: 30px;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    background: #B71C1C;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
 }
