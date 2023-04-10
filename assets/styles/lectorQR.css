@@ -391,9 +391,18 @@ ul li {
     border: none;
 }
 
-.confirmacion-herramientas {
+.containerSeguro {
     width: 100%;
     height: auto;
     position: relative;
     display: block;
+}
+
+#buttonSeguro {
+    background: #183153;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

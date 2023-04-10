@@ -7,6 +7,12 @@ const containerVacio2 = document.querySelector(".container-vacio2");
 const successMessage = document.createElement("div");
 const errorMessage = document.createElement("div");
 
+const confirmMessage = document.createElement("div");
+const noToolsMessage = document.createElement("div");
+
+confirmMessage.textContent = "Herramientas confirmadas";
+noToolsMessage.textContent = "Agregue herramientas para confirmar";
+
 successMessage.textContent = "Escaneado con éxito";
 errorMessage.textContent = "El código ya fue escaneado anteriormente";
 
@@ -32,6 +38,21 @@ function showMessage(messageElement) {
 
 errorMessage.style.backgroundColor = "#d9534f";
 
+[confirmMessage, noToolsMessage].forEach((messageElement) => {
+  messageElement.style.display = "none";
+  messageElement.style.position = "fixed";
+  messageElement.style.top = "90%";
+  messageElement.style.left = "50%";
+  messageElement.style.transform = "translate(-50%, -50%)";
+  messageElement.style.backgroundColor = "#183153";
+  messageElement.style.color = "white";
+  messageElement.style.padding = "10px 20px";
+  messageElement.style.borderRadius = "5px";
+  document.body.appendChild(messageElement);
+});
+
+noToolsMessage.style.backgroundColor = "#d9534f";
+
 function deleteList(event) {
   const button = event.target;
   const ul = button.parentElement;
@@ -48,7 +69,6 @@ function deleteList(event) {
 
   listContainer.remove(); // Cambiar a 'remove()' en lugar de agregar la clase 'deleted' y ocultarlo
 }
-
 
 let scanner = new Instascan.Scanner({
   video: preview,
@@ -72,7 +92,6 @@ scanner.addListener("scan", function (content) {
     return;
   }
 
-  // Agregar el contenido a 'codigosEscaneados'
   codigosEscaneados.push(content);
 
   let list = document.createElement("ul");
@@ -118,7 +137,20 @@ Instascan.Camera.getCameras()
     console.error(e);
   });
 
+  const buttonSeguro = document.getElementById("buttonSeguro");
 
+  buttonSeguro.addEventListener("click", function () {
+    // Verifica si hay códigos QR de herramientas escaneados en pantalla
+    const herramientasEscaneadas = qrHerramientasTwo.querySelectorAll(".list-container");
+  
+    // Comprueba si hay más de un código QR escaneado y si hay herramientas escaneadas en pantalla
+    if (codigosEscaneados.length > 1 && herramientasEscaneadas.length > 0) {
+      showMessage(confirmMessage);
+    } else {
+      showMessage(noToolsMessage);
+    }
+  });
+  
 // Codigo para la ventana emergente
 function openPopup() {
   
