@@ -38,7 +38,7 @@ function deleteList(event) {
   const listContainer = ul.parentElement;
 
   // Obtener el contenido del código QR que se está eliminando
-  const codigoQR = ul.textContent.trim();
+  const codigoQR = ul.textContent.trim().split('\n')[0];
 
   // Eliminar el elemento del array de códigos escaneados
   const index = codigosEscaneados.indexOf(codigoQR);
@@ -46,8 +46,9 @@ function deleteList(event) {
     codigosEscaneados.splice(index, 1);
   }
 
-  listContainer.remove();
+  listContainer.remove(); // Cambiar a 'remove()' en lugar de agregar la clase 'deleted' y ocultarlo
 }
+
 
 let scanner = new Instascan.Scanner({
   video: preview,
@@ -71,31 +72,24 @@ scanner.addListener("scan", function (content) {
     return;
   }
 
+  // Agregar el contenido a 'codigosEscaneados'
   codigosEscaneados.push(content);
+
+  let list = document.createElement("ul");
+  let items = content.split(" | ");
+  items.forEach((item) => {
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
 
   if (primerCodigo === "") {
     primerCodigo = content;
-    let items = content.split(" | ");
-    let list = document.createElement("ul");
-    items.forEach((item) => {
-      let li = document.createElement("li");
-      li.textContent = item;
-      list.appendChild(li);
-    });
     qrTrabajadorOner.innerHTML = "";
     qrTrabajadorOner.appendChild(list);
     requireText.style.display = 'block';
     containerVacio.style.display = 'none';
   } else {
-    let items = content.split(" | ");
-    let list = document.createElement("ul");
-
-    items.forEach((item) => {
-      let li = document.createElement("li");
-      li.textContent = item;
-      list.appendChild(li);
-    });
-
     const buttonDelete = document.getElementById("buttondelete").cloneNode(true);
     buttonDelete.style.display = "block";
     buttonDelete.addEventListener("click", deleteList);
@@ -123,6 +117,7 @@ Instascan.Camera.getCameras()
   .catch(function (e) {
     console.error(e);
   });
+
 
 // Codigo para la ventana emergente
 function openPopup() {

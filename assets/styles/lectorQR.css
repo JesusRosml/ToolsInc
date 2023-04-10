@@ -375,6 +375,7 @@ ul li {
     border: 2px solid #BDBDBD;
     display: inline-block;
     padding: 20px;
+    position: relative;i
     border-radius: 10px;
     list-style: none;
 }
@@ -388,4 +389,11 @@ ul li {
     border-radius: 5px;
     color: #fff;
     border: none;
+}
+
+.confirmacion-herramientas {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
 }
