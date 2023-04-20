@@ -118,6 +118,15 @@ section .form input {
     border: 1px solid #BDBDBD;
 }
 
+.contenedor form button {
+    height: 40px;
+    width: 150px;
+    margin: 0px auto;
+    display: block;
+    position: relative
+    
+}
+
 section .form input:focus {
     border: 2px solid #183153;
 }
