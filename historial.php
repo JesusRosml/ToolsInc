@@ -14,11 +14,11 @@
     <header>
         <nav>
             <ul>
-                <li><i class="fa-solid fa-house"></i><a href="lectorQR.html">Autorización de prestamos</a></li>
-                <li><i class="fa-solid fa-file-circle-plus"></i><a href="QRHerramientas.html">Registro de herramientas</a></li>
-                <li><i class="fa-solid fa-users-viewfinder"></i><a href="QRTrabajadores.html">Registro de trabajadores</a></li>
-                <li><i class="fa-solid fa-box-archive"></i><a href="almacen.html">Almacen</a></li>
-                <li><i class="fa-sharp fa-solid fa-clock"></i><a href="historial.html">Historial</a></li>
+                <li><i class="fa-solid fa-house"></i><a href="lectorQR.php">Autorización de prestamos</a></li>
+                <li><i class="fa-solid fa-file-circle-plus"></i><a href="QRHerramientas.php">Registro de herramientas</a></li>
+                <li><i class="fa-solid fa-users-viewfinder"></i><a href="QRTrabajadores.php">Registro de trabajadores</a></li>
+                <li><i class="fa-solid fa-box-archive"></i><a href="almacen.php">Almacen</a></li>
+                <li><i class="fa-sharp fa-solid fa-clock"></i><a href="historial.php">Historial</a></li>
             </ul>
         </nav>
     </header>

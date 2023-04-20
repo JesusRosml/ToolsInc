@@ -21,13 +21,16 @@
                 <h2>¡Bienvenido!</h2>
             </div>
             <!-- action="procesar-login.php" -->
+            <?php
+            include("conexion_bd.php");
+            include("login.php");
+            ?>
             <div class="forms">
                 <h3>Ingrese sus datos</h3>
-
-                <form  id="login-form">
-                    <input type="email" id="username" placeholder="Correo electronico...">
-                    <input type="password" id="password" placeholder="Contraseña...">
-                    <button type="submit">Inciar Sesión</button>
+                <form  id="login-form" method="post">
+                    <input name="username" type="email" id="username" placeholder="Correo electronico...">
+                    <input name="password" type="password" id="password" placeholder="Contraseña...">
+                    <input name="iniciar" class="btn" type="submit" Value="Iniciar Sesion">
                 </form>
 
                 <div class="informacion">
@@ -45,6 +48,6 @@
     </div> -->
 
     <!-- Scripts -->
-    <script src="assets/scripts/login.js"></script>
+    <!--<script src="assets/scripts/login.js"></script>-->
 </body>
 </html>

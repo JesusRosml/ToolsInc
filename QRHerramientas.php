@@ -17,19 +17,22 @@
     <header>
         <nav>
             <ul>
-                <li><i class="fa-solid fa-house"></i><a href="lectorQR.html">Autorización de prestamos</a></li>
-                <li><i class="fa-solid fa-file-circle-plus"></i><a href="QRHerramientas.html">Registro de herramientas</a></li>
-                <li><i class="fa-solid fa-users-viewfinder"></i><a href="QRTrabajadores.html">Registro de trabajadores</a></li>
-                <li><i class="fa-solid fa-box-archive"></i><a href="almacen.html">Almacen</a></li>
-                <!-- <li><i class="fa-sharp fa-solid fa-clock"></i><a href="historial.html">Historial</a></li> -->
+                <li><i class="fa-solid fa-house"></i><a href="lectorQR.php">Autorización de prestamos</a></li>
+                <li><i class="fa-solid fa-file-circle-plus"></i><a href="QRHerramientas.php">Registro de herramientas</a></li>
+                <li><i class="fa-solid fa-users-viewfinder"></i><a href="QRTrabajadores.php">Registro de trabajadores</a></li>
+                <li><i class="fa-solid fa-box-archive"></i><a href="almacen.php">Almacen</a></li>
+                <!-- <li><i class="fa-sharp fa-solid fa-clock"></i><a href="historial.php">Historial</a></li> -->
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="contenedor">
-
-            <form action="datebase/db.php" method="post" class="form">
+            <?php
+            include("conexion_bd.php");
+            include("registro.php");
+            ?>
+            <form method="post" class="form">
 
                 <div class="container-text">
                     <h3>Generador de codigo QR</h3>
@@ -59,8 +62,7 @@
 
                 <label for="descripcion_herramienta">Escriba la descripcion de la herramienta</label>
                 <input name="description_tool" autocomplete="off"  title="La descripcion no puede ser mayor a 300 caracteres"  required id="description_tool1" type="text">
-
-                <button class="button_enviar" type="submit">Eviar datos</button>
+                <input name="enviar" class="btn" type="submit" Value="Enviar Datos">
 
                 </form>
 
